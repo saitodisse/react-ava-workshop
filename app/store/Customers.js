@@ -1,18 +1,18 @@
-let _customers = []
-const callbacks = []
+let _customers = [];
+const callbacks = [];
 
 export default {
   getCustomers,
   setCustomers,
   subscribe,
-}
+};
 
 /**
  * Returns the current list of customers
  * @return {Array} customers
  */
 function getCustomers() {
-  return _customers
+  return _customers;
 }
 
 /**
@@ -21,8 +21,8 @@ function getCustomers() {
  * @param {Array} customers - An array of objects that have a name property that is a string
  */
 function setCustomers(customers) {
-  _customers = customers
-  _letSubscribersKnow()
+  _customers = customers;
+  _letSubscribersKnow();
 }
 
 /**
@@ -31,15 +31,15 @@ function setCustomers(customers) {
  * @return {Function} - a function to call to unsubscribe
  */
 function subscribe(callback) {
-  callbacks.push(callback)
+  callbacks.push(callback);
   return function removeCallback() {
-    callbacks.splice(callbacks.indexOf(callback), 1)
-  }
+    callbacks.splice(callbacks.indexOf(callback), 1);
+  };
 }
 
 /**
  * Iterates through all callbacks and calls them
  */
 function _letSubscribersKnow() {
-  callbacks.forEach(cb => cb())
+  callbacks.forEach(cb => cb());
 }

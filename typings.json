@@ -1,0 +1,8 @@
+{
+  "name": "react-ava-workshop",
+  "version": false,
+  "ambientDependencies": {
+    "node": "registry:dt/node#4.0.0+20160412142033",
+    "react": "registry:dt/react#0.14.0+20160412154040"
+  }
+}

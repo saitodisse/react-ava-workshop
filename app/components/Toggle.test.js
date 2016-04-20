@@ -14,17 +14,20 @@ test('toggle--off class applied by default', t => {
 });
 
 test('toggle--on class applied when initialToggledOn specified to true', t => {
-  const output = renderStatic({initialToggledOn: true});
+  const initialToggledOn = true;
+  const output = renderStatic({initialToggledOn});
   t.true(output.includes('toggle--on'));
 });
 
 test('invokes the onToggle prop when clicked', t => {
   const onToggle = sinon.spy();
   const div = renderToDiv({onToggle});
+  t.true(div.innerHTML.includes('toggle--off'));
+
   const button = div.querySelector('button');
   Simulate.click(button);
-
   t.true(div.innerHTML.includes('toggle--on'));
+
   t.true(onToggle.calledOnce);
   t.true(onToggle.calledWith(true));
 });

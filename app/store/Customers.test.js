@@ -10,12 +10,14 @@ test('customers should start with empty', t => {
 test('setting customers and getting them', t => {
   const c0 = {name: 'Bill'};
   const c1 = {name: 'Francine'};
-  store.setCustomers([c0, c1]);
+  const c2 = {name: 'John'};
+  store.setCustomers([c0, c1, c2]);
   const customers = store.getCustomers();
-  const [sc0, sc1] = customers;
-  t.true(customers.length === 2);
-  t.same(c0, sc0);
-  t.same(c1, sc1);
+  const [sc0, sc1, sc2] = customers;
+  t.true(customers.length === 3);
+  t.deepEqual(c0, sc0);
+  t.deepEqual(c1, sc1);
+  t.deepEqual(c2, sc2);
 });
 
 test('subscribing to the store', t => {
